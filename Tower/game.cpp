@@ -35,7 +35,10 @@ void TowerHelloWorld(void){
             usleep(10000);
         }
     
-        //TowerPushDrawQueue(new tower::gfx::ColorScreen(arc4random()));
+        TowerPushDrawQueue(new tower::gfx::ColorScreen(arc4random()));
+        TowerPushDrawQueue(new tower::gfx::drawImage(testPattern, aLoc, 0, 0));
+        TowerPushDrawQueue(new tower::gfx::drawImage(testPattern, aLoc, 0, 0));
+        TowerPushDrawQueue(new tower::gfx::drawImage(testPattern, aLoc, 0, 0));
         TowerPushDrawQueue(new tower::gfx::drawImage(testPattern, aLoc, 0, 0));
         TowerPushDrawQueue(new tower::gfx::FlipScreen());
     

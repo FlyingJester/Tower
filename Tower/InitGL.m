@@ -54,22 +54,25 @@ CGLContextObj InitGL(NSWindow *aWindow){
     CGLContextObj newCtx = CGLGetCurrentContext();
     
     assert(newCtx);
-    assert(newCtx = [newContext CGLContextObj]);
+    assert(newCtx == [newContext CGLContextObj]);
     
     glUseProgram(prog);
     glClearColor(0, 0, 0, 255);
 
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
     glEnable(GL_BLEND);
+    glEnable(GL_TEXTURE_2D);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glDisable(GL_DEPTH_TEST);
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
 
     
     [[lView openGLContext] makeCurrentContext];
+    glUseProgram(prog);
     glClearColor(0, 0, 0, 255);
 
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
     glEnable(GL_BLEND);
+    glEnable(GL_TEXTURE_2D);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glDisable(GL_DEPTH_TEST);
     return newCtx;

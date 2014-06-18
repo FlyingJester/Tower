@@ -57,6 +57,7 @@ Image::Image(int x, int y, int w, int h, const unsigned RGBA[w*h*sizeof(unsigned
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, RGBA);
     
     glGenVertexArrays(1, &vao);
+    assert(vao);
     
     glBindBuffer(GL_ARRAY_BUFFER, buffers[VERTEX_BUFFER]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(float)*sizeof(lVertex), lVertex, GL_STATIC_DRAW);
@@ -85,21 +86,16 @@ void Image::updateAttribs() const{
         glVertexAttribPointer(attributes[i], comps[i], GL_FLOAT, GL_FALSE, 
         comps[i]*4, NULL);
     }
-    glBindVertexArray(0);
 }
 
 void Image::Draw(void) const{
+    glBindVertexArray(vao);
+
     this->updateAttribs();
     
-    glBindVertexArray(vao);
-    glEnable(GL_TEXTURE_2D);
-    glEnableVertexAttribArray(attributes[0]);
-    glEnableVertexAttribArray(attributes[1]);
-    glEnableVertexAttribArray(attributes[2]);
     glBindTexture(GL_TEXTURE_2D, texture);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     glBindVertexArray(0);
-    
 
 }
 

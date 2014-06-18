@@ -32,7 +32,7 @@ tower::gfx::DrawingOperation::~DrawingOperation(){
 void tower::gfx::ColorScreen::call(const struct DrawingState *){
     glClearColor(F(mColor[0])/255.0f, F(mColor[1])/255.0f, F(mColor[2])/255.0f, F(mColor[3])/255.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    //glClearColor(0, 0, 0, 255);
+    glClearColor(0, 0, 0, 255);
 }
 
 void tower::gfx::FlipScreen::call(const DrawingState *aState){

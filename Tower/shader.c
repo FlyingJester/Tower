@@ -23,6 +23,7 @@ void main(void){\n\
 static const char * const Tower_FragShaderSource = "\
 #version 150\n\
 \
+uniform vec2 offset;\n\
 uniform sampler2D textureSampler;\n\
 \
 in vec4 color_v;\n\
@@ -31,7 +32,7 @@ out vec4 fragColor;\n\
 \
 void main(void){\n\
   vec4 texcolor = texture(textureSampler, tex);\n\
-  fragColor = color_v*texcolor;\n\
+  fragColor = color_v*texcolor*100.0;\n\
 }\n\
 ";
 
