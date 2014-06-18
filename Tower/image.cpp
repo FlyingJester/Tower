@@ -13,7 +13,9 @@ void Image::incRef(){
     OSAtomicIncrement32((volatile int32_t *)(&refs));
 }
 
-Image::Image(int x, int y, int w, int h, const unsigned RGBA[w*h*sizeof(unsigned)]){
+Image::Image(int x, int y, int w, int h, const unsigned RGBA[w*h*sizeof(unsigned)])
+  : last_shader(0){
+
     glGenTextures(1, &texture);
     assert(texture);
     glGenBuffers(NUM_BUFFERS, buffers);

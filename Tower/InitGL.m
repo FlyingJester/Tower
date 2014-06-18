@@ -83,7 +83,7 @@ void CGL_FlipScreen(const struct DrawingState *aState){
     
     [[*(aState->mView) openGLContext] makeCurrentContext];
     [[*(aState->mView) openGLContext] flushBuffer];
-    //glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
    
 }
 

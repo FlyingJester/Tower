@@ -13,17 +13,16 @@ drawImage::drawImage(tower::gfx::Image *aImage, Location *aLoc, int offsetX, int
 }
 
 void drawImage::call(const DrawingState *aState){
-    
-        //aState->mShader = 3;
+    if(mImage->last_shader != aState->mShader){
         mImage->setAttribs(
-            glGetAttribLocation(3, "position"),
-            glGetAttribLocation(3, "texcoord"),
-            glGetAttribLocation(3, "color"),
-            3
+            glGetAttribLocation(aState->mShader, "position"),
+            glGetAttribLocation(aState->mShader, "texcoord"),
+            glGetAttribLocation(aState->mShader, "color"),
+            aState->mShader
         );
+    }
     
-    float offsets[] = {0.0f, 0.0f};
-    glUniform2fv(aState->mOffsetUniform, 1, offsets);
+    glUniform2fv(aState->mOffsetUniform, 1, mOffsets);
     mImage->Draw();
     
     
